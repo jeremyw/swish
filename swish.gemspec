@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
      "lib/dribbble/player.rb",
      "lib/dribbble/shot.rb",
      "lib/swish.rb",
+     "swish.gemspec",
      "test/helper.rb",
      "test/player_test.rb",
      "test/shot_test.rb"

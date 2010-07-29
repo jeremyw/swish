@@ -8,6 +8,13 @@ Swish is just a Ruby gem:
 
   gem install swish
 
+Not playing in the Ruby league? Here are the others we know of so far:
+
+* ExpressionEngine: http://olivierbon.com/projects/dreebbble
+* JSONP: http://apppi.heroku.com/
+* PHP: http://github.com/martinbean/dribbble-php
+* Python: http://bitbucket.org/sjl/python-dribbble/src
+
 == Examples
 
   require 'swish'
