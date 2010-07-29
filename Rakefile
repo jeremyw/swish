@@ -10,6 +10,8 @@ begin
     gem.email = "jeremy@weiskotten.com"
     gem.homepage = "http://github.com/jeremyw/swish"
     gem.authors = ["Jeremy Weiskotten"]
+    gem.add_development_dependency "crack", ">= 0.1.8"
+    gem.add_development_dependency "httparty", ">= 0.6.1"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
@@ -20,7 +22,7 @@ end
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
+  test.pattern = 'test/**/*_test.rb'
   test.verbose = true
 end
 
@@ -28,7 +30,7 @@ begin
   require 'rcov/rcovtask'
   Rcov::RcovTask.new do |test|
     test.libs << 'test'
-    test.pattern = 'test/**/test_*.rb'
+    test.pattern = 'test/**/*_test.rb'
     test.verbose = true
   end
 rescue LoadError

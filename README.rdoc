@@ -1,6 +1,54 @@
-= swish
+= Swish! A Ruby wrapper for the Dribbble API
 
-Description goes here.
+Learn about the Dribbble API at http://dribbble.com/api.
+
+== Installation
+
+Swish is just a Ruby gem:
+
+  gem install swish
+
+== Examples
+
+  require 'swish'
+  
+  # Find a shot
+  shot = Dribbble::Shot.find(21603)
+  
+  # See some data about the shot
+  shot.title
+  shot.image_url
+  shot.url
+  shot.player.name
+  
+  # Find more shots
+  inspiring       = Dribbble::Shot.popular
+  call_the_police = Dribbble::Shot.everyone
+  yay_noobs       = Dribbble::Shot.debuts
+  
+  # Paginate through shots (default is 15 per page, max 30)
+  Dribbble::Shot.popular(:page => 2, :per_page => 3)
+  Dribbble::Shot.everyone(:page => 10, :per_page => 5)
+  Dribbble::Shot.debuts(:page => 5, :per_page => 30)
+  
+  # Find a player
+  player = Dribbble::Player.find('jeremy')
+  
+  # See some data about the player
+  player.name
+  player.avatar_url
+  player.url
+  player.location
+
+  # List a player's shots
+  player.shots
+  player.shots(:page => 2, :per_page => 10)
+  
+  # List shots by player's that this player follows
+  player.shots_following
+  player.shots_following(:page => 5, :per_page => 30)
+
+
 
 == Note on Patches/Pull Requests
  
