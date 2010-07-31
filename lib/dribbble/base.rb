@@ -5,10 +5,12 @@ module Dribbble
 
     base_uri 'api.dribbble.com'
 
+    attr_accessor :created_at
+
     def initialize(attributes={})
       attributes ||= {}
       attributes.each do |key, value|
-        instance_variable_set "@#{key}", value
+        self.send "#{key}=", value
       end
 
       after_initialize(attributes)
@@ -21,6 +23,10 @@ module Dribbble
     # Delegates to ==
     def eql?(other)
       self == other
+    end
+
+    def created_at=(timestamp)
+      @created_at = parse_time(timestamp)
     end
 
     protected
@@ -37,6 +43,10 @@ module Dribbble
       result[list_key].map do |attributes|
         new(attributes)
       end
+    end
+
+    def parse_time(time_string)
+      Time.parse(time_string)
     end
   end
 end

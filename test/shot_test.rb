@@ -9,7 +9,8 @@ class ShotTest < Test::Unit::TestCase
         'image_url'         => 'http://image_url',
         'image_teaser_url'  => 'http://image_teaser_url',
         'width'             => 3,
-        'height'            => 2)
+        'height'            => 2,
+        'created_at'        => '2010/05/21 16:34:42 -0400')
 
     assert_equal 999, shot.id
     assert_equal 'Title', shot.title
@@ -18,6 +19,7 @@ class ShotTest < Test::Unit::TestCase
     assert_equal 'http://image_teaser_url', shot.image_teaser_url
     assert_equal 3, shot.width
     assert_equal 2, shot.height
+    assert_equal Time.parse('2010/05/21 16:34:42 -0400'), shot.created_at
   end
 
   def test_find

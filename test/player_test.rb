@@ -7,6 +7,7 @@ class PlayerTest < Test::Unit::TestCase
     assert_equal 'Dan Cederholm', player.name
     assert_equal 'http://dribbble.com/players/simplebits', player.url
     assert_equal 'Salem, MA', player.location
+    assert_not_nil player.created_at
   end
 
   def test_shots
