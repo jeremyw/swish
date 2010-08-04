@@ -33,6 +33,11 @@ class ShotTest < Test::Unit::TestCase
     assert_equal 400, shot.width
     assert_equal 300, shot.height
 
+    assert_kind_of Numeric, shot.views_count
+    assert_kind_of Numeric, shot.likes_count
+    assert_kind_of Numeric, shot.comments_count
+    assert_kind_of Numeric, shot.rebounds_count
+
     assert_kind_of Dribbble::Player, shot.player
   end
 

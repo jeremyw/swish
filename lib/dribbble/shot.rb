@@ -1,6 +1,7 @@
 module Dribbble
   class Shot < Base
-    attr_accessor :id, :title, :url, :image_url, :image_teaser_url, :width, :height, :player
+    attr_accessor :id, :title, :url, :image_url, :image_teaser_url, :width, :height, :player,
+        :views_count, :likes_count, :comments_count, :rebounds_count
 
     def after_initialize(attributes)
       @player = Dribbble::Player.new(attributes['player'])

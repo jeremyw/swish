@@ -10,7 +10,8 @@ module Dribbble
     def initialize(attributes={})
       attributes ||= {}
       attributes.each do |key, value|
-        self.send "#{key}=", value
+        setter = "#{key}="
+        self.send setter, value if self.respond_to?(setter)
       end
 
       after_initialize(attributes)

@@ -10,8 +10,9 @@ Swish is just a Ruby gem:
 
 Not playing in the Ruby league? Here are the others we know of so far:
 
-* ExpressionEngine: http://olivierbon.com/projects/dreebbble
-* JSONP: http://apppi.heroku.com/
+* AS3: http://github.com/markstar/StarDribbbleLib
+* ExpressionEngine 1.6.8+: http://ninefour.co.uk/labs/dribbble
+* ExpressionEngine 2: http://olivierbon.com/projects/dreebbble
 * PHP: http://github.com/martinbean/dribbble-php
 * Python: http://bitbucket.org/sjl/python-dribbble/src
 
@@ -27,6 +28,11 @@ Not playing in the Ruby league? Here are the others we know of so far:
   shot.image_url
   shot.url
   shot.player.name
+  shot.views_count
+  shot.likes_count
+  shot.comments_count
+  shot.rebounds_count
+  
   
   # Find more shots
   inspiring       = Dribbble::Shot.popular
@@ -38,6 +44,7 @@ Not playing in the Ruby league? Here are the others we know of so far:
   Dribbble::Shot.everyone(:page => 10, :per_page => 5)
   Dribbble::Shot.debuts(:page => 5, :per_page => 30)
   
+  
   # Find a player
   player = Dribbble::Player.find('jeremy')
   
@@ -46,6 +53,12 @@ Not playing in the Ruby league? Here are the others we know of so far:
   player.avatar_url
   player.url
   player.location
+  
+  # Player stats
+  player.shots_count
+  player.draftees_count
+  player.followers_count
+  player.following_count
 
   # List a player's shots
   player.shots

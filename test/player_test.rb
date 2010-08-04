@@ -8,6 +8,11 @@ class PlayerTest < Test::Unit::TestCase
     assert_equal 'http://dribbble.com/players/simplebits', player.url
     assert_equal 'Salem, MA', player.location
     assert_not_nil player.created_at
+
+    assert_kind_of Numeric, player.shots_count
+    assert_kind_of Numeric, player.draftees_count
+    assert_kind_of Numeric, player.followers_count
+    assert_kind_of Numeric, player.following_count
   end
 
   def test_shots
