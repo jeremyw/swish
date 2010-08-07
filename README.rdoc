@@ -53,6 +53,8 @@ Not playing in the Ruby league? Here are the others we know of so far:
   player.avatar_url
   player.url
   player.location
+  player.twitter_screen_name
+  player.drafted_by_player_id
   
   # Player stats
   player.shots_count
@@ -68,6 +70,14 @@ Not playing in the Ruby league? Here are the others we know of so far:
   player.shots_following
   player.shots_following(:page => 5, :per_page => 30)
 
+  # List a player's draftees
+  player.draftees
+
+  # List a player's followers
+  player.followers
+
+  # List the players who a player is following
+  player.following
 
 
 == Note on Patches/Pull Requests
