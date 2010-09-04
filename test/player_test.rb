@@ -11,10 +11,15 @@ class PlayerTest < Test::Unit::TestCase
     assert_equal 'simplebits', player.twitter_screen_name
     assert_nil player.drafted_by_player_id # no one drafted Dan
 
-    assert_kind_of Numeric, player.shots_count
-    assert_kind_of Numeric, player.draftees_count
-    assert_kind_of Numeric, player.followers_count
-    assert_kind_of Numeric, player.following_count
+    numerics = [
+        :shots_count, :draftees_count, :followers_count, :following_count,
+        :comments_count, :comments_received_count, :likes_count,
+        :likes_received_count, :rebounds_count, :rebounds_received_count
+    ]
+
+    numerics.each do |field|
+      assert_kind_of Numeric, player.send(field), "Expected #{field} to be Numeric but it was #{field.class}"
+    end
   end
 
   def test_shots

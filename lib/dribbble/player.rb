@@ -1,7 +1,8 @@
 module Dribbble
   class Player < Base
     attr_accessor :id, :name, :url, :avatar_url, :location, :twitter_screen_name, :drafted_by_player_id,
-        :shots_count, :draftees_count, :followers_count, :following_count
+        :shots_count, :draftees_count, :followers_count, :following_count,
+        :comments_count, :comments_received_count, :likes_count, :likes_received_count, :rebounds_count, :rebounds_received_count
 
     def self.find(id)
       new(get("/players/#{id}"))
