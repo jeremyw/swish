@@ -6,6 +6,7 @@ class PlayerTest < Test::Unit::TestCase
     assert_equal 1, player.id
     assert_equal 'Dan Cederholm', player.name
     assert_equal 'http://dribbble.com/players/simplebits', player.url
+    assert_equal 'http://simplebits.com', player.website_url
     assert_equal 'Salem, MA', player.location
     assert_not_nil player.created_at
     assert_equal 'simplebits', player.twitter_screen_name
