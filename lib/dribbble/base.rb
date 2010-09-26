@@ -37,13 +37,7 @@ module Dribbble
     end
 
     def self.paginated_list(result, list_key='shots')
-      # result['total']
-      # result['page']
-      # result['pages']
-      # result['per_page']
-      result[list_key].map do |attributes|
-        new(attributes)
-      end
+      PaginatedList.new(result, list_key)
     end
 
     def parse_time(time_string)
