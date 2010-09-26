@@ -1,4 +1,5 @@
 require 'httparty'
+require 'dribbble/paginated_list'
 require 'dribbble/base'
 require 'dribbble/shot'
 require 'dribbble/player'
