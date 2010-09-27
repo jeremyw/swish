@@ -20,15 +20,19 @@ module Dribbble
     end
 
     def draftees(options={})
-      Player.paginated_list(self.class.get("/players/#{@id}/draftees", :query => options), 'players')
+      Player.paginated_list(self.class.get("/players/#{@id}/draftees", :query => options))
     end
 
     def followers(options={})
-      Player.paginated_list(self.class.get("/players/#{@id}/followers", :query => options), 'players')
+      Player.paginated_list(self.class.get("/players/#{@id}/followers", :query => options))
     end
 
     def following(options={})
-      Player.paginated_list(self.class.get("/players/#{@id}/following", :query => options), 'players')
+      Player.paginated_list(self.class.get("/players/#{@id}/following", :query => options))
+    end
+
+    def self.paginated_list(results)
+      PaginatedList.new(results, 'players')
     end
   end
 end

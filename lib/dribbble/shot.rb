@@ -25,5 +25,9 @@ module Dribbble
     def self.popular(options={})
       paginated_list(get("/shots/popular", :query => options))
     end
+
+    def self.paginated_list(result)
+      PaginatedList.new(result, 'shots')
+    end
   end
 end
