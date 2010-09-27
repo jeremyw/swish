@@ -30,9 +30,5 @@ module Dribbble
     def following(options={})
       Player.paginated_list(self.class.get("/players/#{@id}/following", :query => options))
     end
-
-    def self.paginated_list(results)
-      PaginatedList.new(results, 'players')
-    end
   end
 end

@@ -30,6 +30,10 @@ module Dribbble
       @created_at = parse_time(timestamp)
     end
 
+    def self.paginated_list(results)
+      Dribbble::PaginatedList.new(results)
+    end
+
     protected
 
     def after_initialize(attributes)
