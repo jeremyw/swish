@@ -36,10 +36,6 @@ module Dribbble
       # no-op, can be overridden
     end
 
-    def self.paginated_list(result, list_key='shots')
-      PaginatedList.new(result, list_key)
-    end
-
     def parse_time(time_string)
       Time.parse(time_string)
     end

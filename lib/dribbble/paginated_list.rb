@@ -1,7 +1,7 @@
 module Dribbble
   class PaginatedList < Array
     attr_reader :total, :pages, :per_page, :page
-    def initialize(response, collection_type='shots')
+    def initialize(response, collection_type)
       @total = response['total']
       @pages = response['pages']
       @per_page = response['per_page']
