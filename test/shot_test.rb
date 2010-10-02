@@ -43,7 +43,9 @@ class ShotTest < Test::Unit::TestCase
 
   def test_comments
     shot = Dribbble::Shot.find(21603)
-    assert false, "Not yet implemented!"
+    comments = shot.comments
+    assert comments.is_a?(Dribbble::PaginatedList), "#{comments.inspect} is not a Dribbble::PaginatedList."
+    comments.each { |c| assert c.is_a?(Dribbble::Comment), "#{c.inspect} is not a Dribbble::Comment." }
   end
 
   def test_debuts
