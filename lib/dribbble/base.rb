@@ -1,7 +1,6 @@
 module Dribbble
   class Base
     include HTTParty
-    extend HTTParty
 
     base_uri 'api.dribbble.com'
 
