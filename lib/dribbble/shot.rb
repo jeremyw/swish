@@ -3,7 +3,7 @@ module Dribbble
     attr_reader :player
     def initialize(attributes={})
       @player = Dribbble::Player.new(attributes.delete('player')) if attributes['player']
-      super attributes
+      super
     end
 
     def self.find(id)
