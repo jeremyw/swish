@@ -46,4 +46,18 @@ class PaginatedListTest < Test::Unit::TestCase
     assert_equal 2, list.size
     list.each { |p| assert p.is_a?(Dribbble::Player), "#{p.inspect} is not a Dribbble::Player" }
   end
+
+  def test_initialize_collecting_comments
+    comments_results = {
+      "comments"=> [{}, {}], 
+      "total"=>201,
+      "page"=>1,
+      "pages"=>101,
+      "per_page"=>2
+    } 
+
+    list = Dribbble::PaginatedList.new(comments_results)
+    assert_equal 2, list.size
+    list.each { |p| assert p.is_a?(Dribbble::Comment), "#{p.inspect} is not a Dribbble::Comment" }
+  end
 end

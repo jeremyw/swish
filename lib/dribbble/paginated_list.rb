@@ -1,17 +1,22 @@
 module Dribbble
   class PaginatedList < Array
     attr_reader :total, :pages, :per_page, :page
-    def initialize(response)
-      @total = response['total']
-      @pages = response['pages']
-      @per_page = response['per_page']
-      @page = response['page']
+    def initialize(results)
+      @total = results['total']
+      @pages = results['pages']
+      @per_page = results['per_page']
+      @page = results['page']
 
-      result_key, result_class = response.has_key?('shots') \
-        ? ['shots', Dribbble::Shot] \
-        : ['players', Dribbble::Player]
+      result_key, result_class = 
+        if results.has_key?('shots')
+          ['shots', Dribbble::Shot]
+        elsif results.has_key?('players')
+          ['players', Dribbble::Player]
+        else
+          ['comments', Dribbble::Comment]
+        end
 
-      super(response[result_key].map { |attrs| result_class.new attrs })
+      super((results[result_key] || []).map { |attrs| result_class.new attrs })
     end
 
     def inspect

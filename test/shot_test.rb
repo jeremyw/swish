@@ -41,6 +41,11 @@ class ShotTest < Test::Unit::TestCase
     assert_kind_of Dribbble::Player, shot.player
   end
 
+  def test_comments
+    shot = Dribbble::Shot.find(21603)
+    assert false, "Not yet implemented!"
+  end
+
   def test_debuts
     shots = Dribbble::Shot.debuts
     assert_kind_of Array, shots
