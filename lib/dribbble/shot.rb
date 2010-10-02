@@ -1,8 +1,9 @@
 module Dribbble
   class Shot < Base
+    attr_reader :player
     def initialize(attributes={})
-      super
-      @attributes['player'] = Dribbble::Player.new(@attributes['player'])
+      @player = Dribbble::Player.new(attributes.delete('player')) if attributes['player']
+      super attributes
     end
 
     def self.find(id)
