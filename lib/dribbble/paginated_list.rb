@@ -1,5 +1,5 @@
 module Dribbble
-  class PaginatedList < Array
+  class PaginatedList < ::Array
     attr_reader :total, :pages, :per_page, :page
     def initialize(results)
       @total = results['total']

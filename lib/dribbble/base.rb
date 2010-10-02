@@ -6,22 +6,20 @@ module Dribbble
     base_uri 'api.dribbble.com'
 
     def initialize(attributes=nil)
-      @attributes = attributes || {}
-      @attributes.each_key { |k| instance_eval "undef #{k} if __respond_to__?(:#{k})" }
-      @attributes['created_at'] = parse_time(@attributes['created_at'])
-    end
-
-    alias __respond_to__? respond_to?
-    def respond_to?(method)
-      @attributes.has_key?(method.to_s) || __respond_to__?(method)
-    end
-
-    def method_missing(method, *args, &block)
-      if @attributes.has_key?(method.to_s)
-        @attributes[method.to_s]
-      else
-        super
+      attributes ||= {}
+      @created_at = attributes.delete('created_at')
+      attributes.each do |(attr, val)|
+        instance_variable_set("@#{attr}", val)
+        instance_eval "def #{attr}() @#{attr} end"
       end
+    end
+
+    def get(*args, &block)
+      self.class.get *args, &block
+    end
+
+    def created_at
+      parse_time(@created_at)
     end
 
     def ==(other)
