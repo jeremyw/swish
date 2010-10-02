@@ -11,24 +11,24 @@ module Dribbble
     # Fetches this player's shots.
     # Options: :page, :per_page
     def shots(options={})
-      Shot.paginated_list(self.class.get("/players/#{@id}/shots", :query => options))
+      paginated_list(self.class.get("/players/#{@id}/shots", :query => options))
     end
 
     # Fetches shots by players that this player follows.
     def shots_following(options={})
-      Shot.paginated_list(self.class.get("/players/#{@id}/shots/following", :query => options))
+      paginated_list(self.class.get("/players/#{@id}/shots/following", :query => options))
     end
 
     def draftees(options={})
-      Player.paginated_list(self.class.get("/players/#{@id}/draftees", :query => options))
+      paginated_list(self.class.get("/players/#{@id}/draftees", :query => options))
     end
 
     def followers(options={})
-      Player.paginated_list(self.class.get("/players/#{@id}/followers", :query => options))
+      paginated_list(self.class.get("/players/#{@id}/followers", :query => options))
     end
 
     def following(options={})
-      Player.paginated_list(self.class.get("/players/#{@id}/following", :query => options))
+      paginated_list(self.class.get("/players/#{@id}/following", :query => options))
     end
   end
 end

@@ -5,16 +5,23 @@ module Dribbble
 
     base_uri 'api.dribbble.com'
 
-    attr_accessor :created_at
+    def initialize(attributes=nil)
+      @attributes = attributes || {}
+      @attributes.each_key { |k| instance_eval "undef #{k} if __respond_to__?(:#{k})" }
+      @attributes['created_at'] = parse_time(@attributes['created_at'])
+    end
 
-    def initialize(attributes={})
-      attributes ||= {}
-      attributes.each do |key, value|
-        setter = "#{key}="
-        self.send setter, value if self.respond_to?(setter)
+    alias __respond_to__? respond_to?
+    def respond_to?(method)
+      @attributes.has_key?(method.to_s) || __respond_to__?(method)
+    end
+
+    def method_missing(method, *args, &block)
+      if @attributes.has_key?(method.to_s)
+        @attributes[method.to_s]
+      else
+        super
       end
-
-      after_initialize(attributes)
     end
 
     def ==(other)
@@ -26,22 +33,18 @@ module Dribbble
       self == other
     end
 
-    def created_at=(timestamp)
-      @created_at = parse_time(timestamp)
-    end
-
     def self.paginated_list(results)
       Dribbble::PaginatedList.new(results)
     end
 
-    protected
-
-    def after_initialize(attributes)
-      # no-op, can be overridden
+    def paginated_list(results)
+      self.class.paginated_list(results)
     end
 
+    protected
+
     def parse_time(time_string)
-      Time.parse(time_string)
+      Time.parse(time_string) if time_string
     end
   end
 end
