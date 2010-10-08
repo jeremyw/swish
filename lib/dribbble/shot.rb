@@ -7,26 +7,26 @@ module Dribbble
     end
 
     def self.find(id)
-      new(get("/shots/#{id}"))
+      new(query_api("/shots/#{id}"))
     end
 
     def comments(options={})
-      paginated_list(get("/shots/#{@id}/comments", :query => options))
+      paginated_list(query_api("/shots/#{@id}/comments", options))
     end
 
     # Options: :page, :per_page
     def self.debuts(options={})
-      paginated_list(get("/shots/debuts", :query => options))
+      paginated_list(query_api("/shots/debuts", options))
     end
 
     # Options: :page, :per_page
     def self.everyone(options={})
-      paginated_list(get("/shots/everyone", :query => options))
+      paginated_list(query_api("/shots/everyone", options))
     end
 
     # Options: :page, :per_page
     def self.popular(options={})
-      paginated_list(get("/shots/popular", :query => options))
+      paginated_list(query_api("/shots/popular", options))
     end
   end
 end

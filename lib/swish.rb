@@ -1,4 +1,8 @@
 require 'httparty'
+require 'json'
+
+require 'dribbble/config'
+require 'dribbble/redis_cache'
 require 'dribbble/paginated_list'
 require 'dribbble/base'
 require 'dribbble/comment'

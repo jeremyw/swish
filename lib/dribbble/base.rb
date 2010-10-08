@@ -1,9 +1,5 @@
 module Dribbble
   class Base
-    include HTTParty
-
-    base_uri 'api.dribbble.com'
-
     def initialize(attributes=nil)
       attributes ||= {}
       @created_at = attributes.delete('created_at')
@@ -13,8 +9,12 @@ module Dribbble
       end
     end
 
-    def get(*args, &block)
-      self.class.get *args, &block
+    def query_api(path, options={})
+      self.class.query_api path, options
+    end
+
+    def self.query_api(path, options={})
+      Dribbble::RedisCache.fetch(path, options)
     end
 
     def created_at
