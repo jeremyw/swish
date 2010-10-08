@@ -1,7 +1,5 @@
 module Dribbble
   class RedisCache
-    require 'redis' if Dribbble::Config.enable_redis
-
     include HTTParty
     base_uri 'api.dribbble.com'
 

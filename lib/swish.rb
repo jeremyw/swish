@@ -1,5 +1,6 @@
 require 'httparty'
 require 'json'
+require 'redis'
 
 require 'dribbble/config'
 require 'dribbble/redis_cache'
