@@ -49,5 +49,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency(%q<httparty>, "~> 0.6.1")
   s.add_runtime_dependency(%q<json_pure>, "~> 1.4.6")
   s.add_runtime_dependency(%q<redis>, "~> 2.0.10")
+  s.add_runtime_dependency(%q<SystemTimer>, "~> 1.2")
 end
 
