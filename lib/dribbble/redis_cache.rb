@@ -23,26 +23,18 @@ module Dribbble
     end
 
     def cached_value
-      @connection.get(@key) || cache_response
+      JSON.parse(@connection.get(@key) || cache_response)
     end
 
     def api_response
-      self.class.get @path, @options
-    end
-
-    def value
-      if Dribbble::Config.enable_redis
-        JSON.parse @value
-      else
-        api_response
-      end
+      self.class.get @path, :query => @options
     end
 
     private 
 
     def cache_response
-      live_value = api_response
-      @connection.set @key, live_value.to_json
+      live_value = api_response.to_json
+      @connection.set @key, live_value
       @connection.expire @key, 60
       live_value
     end
