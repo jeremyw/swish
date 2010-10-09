@@ -3,22 +3,51 @@ module Dribbble
     include HTTParty
     base_uri 'api.dribbble.com'
 
+    attr_reader :value
+
     def self.fetch(path, options)
+      new(path, options).value
+    end
+
+    def initialize(path, options)
+      @path = path
+      @options = options
+
       if Dribbble::Config.enable_redis
-        redis = Redis.new
-        redis_key = "#{path}::#{options.hash}"
-        cached_val = redis.get(redis_key)
-        if cached_val
-          JSON.parse cached_val
-        else
-          live_val = get(path, :query => options).parsed_response
-          redis.set redis_key, live_val.to_json
-          redis.expire redis_key, 60
-          live_val
-        end
+        @connection = Redis.new
+        @key = "#{path}::#{options.hash}"
+        @value = cached_value
       else
-        get(path, :query => options)
+        @value = api_response
+      end 
+    end
+
+    def cached_value
+      @connection.get(@key) || cache_response
+    end
+
+    def api_response
+      self.class.get @path, @options
+    end
+
+    def value
+      if Dribbble::Config.enable_redis
+        JSON.parse @value
+      else
+        api_response
       end
+    end
+
+    private 
+
+    def cache_response
+      live_value = api_response
+      @connection.set @key, live_value.to_json
+      @connection.expire @key, 60
+      live_value
     end
   end
 end
+
+#TODO: Add an api-hits-this-minute key, expires in 60". Pad cap down to 55.
+#      If value is > 55, put requests on queue, sleep key's TTL
