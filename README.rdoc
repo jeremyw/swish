@@ -11,6 +11,7 @@ Swish is just a Ruby gem:
 Not playing in the Ruby league? Here are the others we know of so far:
 
 * AS3: http://github.com/markstar/StarDribbbleLib
+* C#/.NET: http://github.com/superlogical/dribbble-dotnet
 * ExpressionEngine 1.6.8+: http://ninefour.co.uk/labs/dribbble
 * ExpressionEngine 2: http://olivierbon.com/projects/dreebbble
 * PHP: http://github.com/martinbean/dribbble-php
