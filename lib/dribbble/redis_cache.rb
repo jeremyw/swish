@@ -34,7 +34,8 @@ module Dribbble
 
     def redis_config
       { :host => Dribbble::Config.redis_host || "localhost",
-        :port => Dribble::Config.redis_port || 6379 }
+        :port => Dribbble::Config.redis_port || 6379,
+        :password => Dribbble::Config.redis_password }
     end
 
     def expire_time
