@@ -14,7 +14,7 @@ module Dribbble
       @options = options
 
       if Dribbble::Config.enable_redis
-        @connection = Redis.new
+        @connection = Redis.new(redis_config)
         @key = "#{path}::#{options.hash}"
         @value = cached_value
       else
@@ -31,6 +31,11 @@ module Dribbble
     end
 
     private 
+
+    def redis_config
+      { :host => Dribbble::Config.redis_host || "localhost",
+        :port => Dribble::Config.redis_port || 6379 }
+    end
 
     def expire_time
       @expire_time ||= (Dribbble::Config.expire_time || 60)
