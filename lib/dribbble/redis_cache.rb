@@ -32,10 +32,14 @@ module Dribbble
 
     private 
 
+    def expire_time
+      @expire_time ||= (Dribbble::Config.expire_time || 60)
+    end
+
     def cache_response
       live_value = api_response.to_json
       @connection.set @key, live_value
-      @connection.expire @key, 60
+      @connection.expire @key, expire_time
       live_value
     end
   end
