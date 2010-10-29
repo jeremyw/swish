@@ -9,6 +9,10 @@ module Dribbble
       end
     end
 
+    def message
+      "OK"
+    end
+
     def query_api(path, options={})
       self.class.query_api path, options
     end
