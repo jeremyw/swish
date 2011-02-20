@@ -11,7 +11,7 @@ Swish is just a Ruby gem:
 Not playing in the Ruby league? Here are the others we know of so far:
 
 * AS3: http://github.com/markstar/StarDribbbleLib
-* C#/.NET: http://github.com/superlogical/dribbble-dotnet
+* C#/.NET: http://github.com/superlogical/dribbble-dotnet (I would have called it "Nothing but .NET")
 * ExpressionEngine 1.6.8+: http://ninefour.co.uk/labs/dribbble
 * ExpressionEngine 2: http://olivierbon.com/projects/dreebbble
 * PHP: http://github.com/martinbean/dribbble-php
@@ -34,17 +34,10 @@ Not playing in the Ruby league? Here are the others we know of so far:
   shot.comments_count
   shot.rebounds_count
   
-  
   # Find more shots
   inspiring       = Dribbble::Shot.popular
   call_the_police = Dribbble::Shot.everyone
   yay_noobs       = Dribbble::Shot.debuts
-  
-  # Paginate through shots (default is 15 per page, max 30)
-  Dribbble::Shot.popular(:page => 2, :per_page => 3)
-  Dribbble::Shot.everyone(:page => 10, :per_page => 5)
-  Dribbble::Shot.debuts(:page => 5, :per_page => 30)
-  
   
   # Find a player
   player = Dribbble::Player.find('jeremy')
@@ -65,11 +58,9 @@ Not playing in the Ruby league? Here are the others we know of so far:
 
   # List a player's shots
   player.shots
-  player.shots(:page => 2, :per_page => 10)
   
-  # List shots by player's that this player follows
+  # List shots by players that this player follows
   player.shots_following
-  player.shots_following(:page => 5, :per_page => 30)
 
   # List a player's draftees
   player.draftees
@@ -80,6 +71,41 @@ Not playing in the Ruby league? Here are the others we know of so far:
   # List the players who a player is following
   player.following
 
+== Pagination
+
+The Dribbble API returns paginated lists, with a default page size of 15 items. Swish makes it easy to traverse the pages of any list.
+
+  # Get the second page of popular shots, with 30 shots per page
+  shots = Dribbble::Shot.popular(:page => 2, :per_page => 30)
+  
+  # Some useful stats for rendering pagination links
+  shots.page     # => current page number
+  shots.per_page # => number of items per page
+  shots.total    # => total number of items on all pages
+  shots.pages    # => total number of pages
+  
+  # Try it with other lists
+  Dribbble::Player.find('jeremy').shots(:per_page => 5)
+  Dribbble::Player.find('jeremy').shots_following(:page => 10)
+
+See http://dribbble.com/api#pagination for more information.
+
+== Who's using Swish?
+
+* http://liiikes.com/, "Using statistics to find the best content on Dribbble."
+* http://hooppps.com/, "A free open-source mobile dribbble browser"
+
+Email jeremy@weiskotten.com to have your project added to this list.
+
+== Thanks
+
+Thanks to Dan and Rich for creating Dribbble (and its API!), and to everyone that has contributed to Swish, including:
+
+* Jeffrey Chupp
+* Jon Distad
+* Michael Parenteau
+
+Email jeremy@weiskotten.com if you should be on this list. Apologies and thanks in advance.
 
 == Note on Patches/Pull Requests
  
