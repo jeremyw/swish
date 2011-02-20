@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeremy Weiskotten"]
-  s.date = %q{2010-09-18}
+  s.date = %q{2011-02-20}
   s.description = %q{A Ruby wrapper for the Dribbble API}
   s.email = %q{jeremy@weiskotten.com}
   s.extra_rdoc_files = [
@@ -24,11 +24,16 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/dribbble/base.rb",
+     "lib/dribbble/comment.rb",
+     "lib/dribbble/paginated_list.rb",
      "lib/dribbble/player.rb",
      "lib/dribbble/shot.rb",
      "lib/swish.rb",
      "swish.gemspec",
+     "test/base_test.rb",
+     "test/comment_test.rb",
      "test/helper.rb",
+     "test/paginated_list_test.rb",
      "test/player_test.rb",
      "test/shot_test.rb"
   ]
@@ -38,7 +43,10 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{A Ruby wrapper for the Dribbble API}
   s.test_files = [
-    "test/helper.rb",
+    "test/base_test.rb",
+     "test/comment_test.rb",
+     "test/helper.rb",
+     "test/paginated_list_test.rb",
      "test/player_test.rb",
      "test/shot_test.rb"
   ]
