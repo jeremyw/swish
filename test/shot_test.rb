@@ -28,8 +28,8 @@ class ShotTest < Test::Unit::TestCase
     assert_equal 21603, shot.id
     assert_equal 'Moon', shot.title
     assert_equal 'http://dribbble.com/shots/21603-Moon', shot.url
-    assert_equal 'http://dribbble.com/system/users/1/screenshots/21603/shot_1274474082.png', shot.image_url
-    assert_equal 'http://dribbble.com/system/users/1/screenshots/21603/shot_1274474082_teaser.png', shot.image_teaser_url
+    assert_match /http:\/\/dribbble.com\/system\/users\/1\/screenshots\/21603\/shot_1274474082.png\?\d+/, shot.image_url
+    assert_match /http:\/\/dribbble.com\/system\/users\/1\/screenshots\/21603\/shot_1274474082_teaser.png\?\d+/, shot.image_teaser_url
     assert_equal 400, shot.width
     assert_equal 300, shot.height
 
