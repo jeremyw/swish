@@ -14,6 +14,10 @@ module Dribbble
       paginated_list(get("/shots/#{@id}/comments", :query => options))
     end
 
+    def rebounds(options={})
+      paginated_list(get("/shots/#{@id}/rebounds", :query => options))
+    end
+
     # Options: :page, :per_page
     def self.debuts(options={})
       paginated_list(get("/shots/debuts", :query => options))

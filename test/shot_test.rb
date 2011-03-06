@@ -48,6 +48,13 @@ class ShotTest < Test::Unit::TestCase
     comments.each { |c| assert c.is_a?(Dribbble::Comment), "#{c.inspect} is not a Dribbble::Comment." }
   end
 
+  def test_rebounds
+    shot = Dribbble::Shot.find(21595)
+    rebounds = shot.rebounds
+    assert rebounds.is_a?(Dribbble::PaginatedList), "#{rebounds.inspect} is not a Dribbble::PaginatedList."
+    rebounds.each { |r| assert r.is_a?(Dribbble::Shot), "#{r.inspect} is not a Dribbble::Shot." }
+  end
+
   def test_debuts
     shots = Dribbble::Shot.debuts
     assert_kind_of Array, shots
