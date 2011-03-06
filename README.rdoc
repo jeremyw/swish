@@ -14,6 +14,7 @@ Not playing in the Ruby league? Here are the others we know of so far:
 * C#/.NET: http://github.com/superlogical/dribbble-dotnet (I would have called it "Nothing but .NET")
 * ExpressionEngine 1.6.8+: http://ninefour.co.uk/labs/dribbble
 * ExpressionEngine 2: http://olivierbon.com/projects/dreebbble
+* jQuery: https://github.com/tylergaw/jribbble
 * PHP: http://github.com/martinbean/dribbble-php
 * Python: http://bitbucket.org/sjl/python-dribbble/src
 
