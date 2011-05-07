@@ -1,6 +1,6 @@
 = Swish! A Ruby wrapper for the Dribbble API
 
-http://travis-ci.org/jeremyw/swish.png[http://travis-ci.org/jeremyw/swish]
+http://travis-ci.org/jeremyw/swish.png
 
 Learn about the Dribbble API at http://dribbble.com/api.
 
