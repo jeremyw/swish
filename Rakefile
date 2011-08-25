@@ -39,7 +39,7 @@ rescue LoadError
   end
 end
 
-task :test => :check_dependencies
+task :test => :check_dependencies if defined?(Jeweler)
 
 task :default => :test
 
