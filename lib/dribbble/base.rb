@@ -14,7 +14,7 @@ module Dribbble
     end
 
     def get(*args, &block)
-      self.class.get *args, &block
+      self.class.get(*args, &block)
     end
 
     def created_at

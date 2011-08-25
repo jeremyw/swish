@@ -85,8 +85,8 @@ class PlayerTest < Test::Unit::TestCase
     player = Dribbble::Player.find(1)
     following = player.following
     assert_equal 15, following.size, "default page size"
-    following.each do |following|
-      assert_kind_of Dribbble::Player, following
+    following.each do |following_player|
+      assert_kind_of Dribbble::Player, following_player
     end
 
     following = player.following(:per_page => 2)
