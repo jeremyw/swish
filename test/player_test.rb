@@ -47,13 +47,13 @@ class PlayerTest < Test::Unit::TestCase
     shots.each do |shot|
       assert_kind_of Dribbble::Shot, shot
       assert_kind_of Dribbble::Player, shot.player
-      assert_not_equal player, shot.player
     end
 
     shots = player.shots_following(:per_page => 2)
     assert_equal 2, shots.size
     shots.each do |shot|
-      assert_not_equal player, shot.player
+      assert_kind_of Dribbble::Shot, shot
+      assert_kind_of Dribbble::Player, shot.player
     end
   end
 
