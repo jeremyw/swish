@@ -1,23 +1,4 @@
-require 'rubygems'
-require 'rake'
-
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "swish"
-    gem.summary = %Q{A Ruby wrapper for the Dribbble API}
-    gem.description = %Q{A Ruby wrapper for the Dribbble API}
-    gem.email = "jeremy@weiskotten.com"
-    gem.homepage = "http://github.com/jeremyw/swish"
-    gem.authors = ["Jeremy Weiskotten"]
-    gem.add_development_dependency "crack", ">= 0.1.8"
-    gem.add_development_dependency "httparty", ">= 0.6.1"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
-end
+require "bundler/gem_tasks"
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
@@ -26,6 +7,8 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
   test.warning = true
 end
+
+task :default => :test
 
 begin
   require 'rcov/rcovtask'
@@ -39,10 +22,6 @@ rescue LoadError
     abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
   end
 end
-
-task :test => :check_dependencies if defined?(Jeweler)
-
-task :default => :test
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
