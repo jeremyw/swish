@@ -23,6 +23,12 @@ class PlayerTest < Test::Unit::TestCase
     end
   end
 
+  def test_finding_invalid_user
+    assert_raises(Dribbble::PlayerNotFound) do
+      Dribbble::Player.find(999999)
+    end
+  end
+
   def test_shots
     player = Dribbble::Player.find(1)
     shots = player.shots
