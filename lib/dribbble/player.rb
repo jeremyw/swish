@@ -3,10 +3,10 @@ module Dribbble
     def self.fetch(url, options = {})
       user = get(url, options)
 
-      if user.response.is_a?(Net::HTTPOK)
-        user
-      else
+      if user.response.is_a?(Net::HTTPNotFound)
         raise PlayerNotFound
+      else
+        user
       end
     end
 
