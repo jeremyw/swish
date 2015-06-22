@@ -60,4 +60,14 @@ class PaginatedListTest < Test::Unit::TestCase
     assert_equal 2, list.size
     list.each { |p| assert p.is_a?(Dribbble::Comment), "#{p.inspect} is not a Dribbble::Comment" }
   end
+
+  def test_real_life
+    per_page = 30
+    page_count = Dribbble::Base.paginated_list(Dribbble::Base.get("/players/icco/shots/likes", :query => {:per_page => per_page})).pages
+    (1..page_count).each do |page|
+      list = Dribbble::Base.paginated_list(Dribbble::Base.get("/players/icco/shots/likes", :query => {:page => page, :per_page => per_page}))
+      assert_equal per_page, list.size if page < page_count
+      list.each { |p| assert p.is_a?(Dribbble::Shot), "#{p.inspect} is not a Dribbble::Shot" }
+    end
+  end
 end

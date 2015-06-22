@@ -8,9 +8,9 @@ module Dribbble
       @page = results['page']
 
       result_key, result_class = 
-        if results.has_key?('shots')
+        if results.key?('shots')
           ['shots', Dribbble::Shot]
-        elsif results.has_key?('players')
+        elsif results.key?('players')
           ['players', Dribbble::Player]
         else
           ['comments', Dribbble::Comment]
