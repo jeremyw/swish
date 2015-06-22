@@ -28,8 +28,11 @@ class ShotTest < Test::Unit::TestCase
     assert_equal 21603, shot.id
     assert_equal 'Moon', shot.title
     assert_equal 'http://dribbble.com/shots/21603-Moon', shot.url
-    assert_match(/http:\/\/dribbble.com\/system\/assets\/\d+\/1\/screenshots\/21603\/shot_1274474082.png\?\d+/, shot.image_url)
-    assert_match(/http:\/\/dribbble.com\/system\/assets\/\d+\/1\/screenshots\/21603\/shot_1274474082_teaser.png\?\d+/, shot.image_teaser_url)
+
+    # Dribble doesn't store shots at its own site anymore, instead hosts on
+    # cloudfront. This may change with time.
+    assert_match(%r{https://[A-z0-9]+\.cloudfront\.net/users/1/screenshots/21603/shot_1274474082\.png}, shot.image_url)
+    assert_match(%r{https://[A-z0-9]+\.cloudfront\.net/users/1/screenshots/21603/shot_1274474082_teaser\.png}, shot.image_teaser_url)
     assert_equal 400, shot.width
     assert_equal 300, shot.height
 
