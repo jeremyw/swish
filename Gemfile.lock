@@ -8,16 +8,18 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    crack (0.4.1)
-      safe_yaml (~> 0.9.0)
-    httparty (0.11.0)
-      multi_json (~> 1.0)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
+    httparty (0.13.5)
+      json (~> 1.8)
       multi_xml (>= 0.5.2)
-    multi_json (1.7.7)
-    multi_xml (0.5.4)
-    rake (10.1.0)
-    safe_yaml (0.9.4)
-    test-unit (2.5.5)
+    json (1.8.3)
+    multi_xml (0.5.5)
+    power_assert (0.2.3)
+    rake (10.4.2)
+    safe_yaml (1.0.4)
+    test-unit (3.1.2)
+      power_assert
 
 PLATFORMS
   ruby
@@ -26,3 +28,6 @@ DEPENDENCIES
   rake
   swish!
   test-unit
+
+BUNDLED WITH
+   1.10.2
