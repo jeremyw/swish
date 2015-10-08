@@ -8,8 +8,9 @@ module Dribbble
       attributes ||= {}
       @created_at = attributes.delete('created_at')
       attributes.each do |(attr, val)|
-        instance_variable_set("@#{attr}", val)
-        instance_eval "def #{attr}() @#{attr} end"
+        underscore_attr = underscore(attr)
+        instance_variable_set("@#{underscore_attr}", val)
+        instance_eval "def #{underscore_attr}() @#{underscore_attr} end"
       end
     end
 
@@ -42,6 +43,10 @@ module Dribbble
 
     def parse_time(time_string)
       Time.parse(time_string) if time_string
+    end
+
+    def underscore(string)
+      string.split("-").join("_")
     end
   end
 end

@@ -11,7 +11,7 @@ module Dribbble
     end
 
     def self.find(id)
-      new(fetch("/players/#{id}"))
+      new(get("/#{id}"))
     end
 
     # Fetches this player's shots.
